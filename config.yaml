@@ -1,0 +1,6 @@
+url: amqp://guest:guest@localhost:5672/
+concurrency: 100
+triggers:
+- source: queue1
+  endpoint: http://localhost:8000
+  sink: queue2
