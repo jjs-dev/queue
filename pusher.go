@@ -18,7 +18,7 @@ type trigger struct {
 
 type config struct {
 	Url string
-	Concurrency int
+	Concurrency int // not sure if we need this in go at all
 	Triggers []trigger
 }
 
@@ -74,6 +74,7 @@ func process(t trigger, ch *amqp.Channel, msg []byte) {
 			false,  // mandatory
 			false,  // immediate
 			data)
+		failOnError(err, "Failed to publish response")
 	}
 }
 
